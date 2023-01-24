@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        moveSpeed = Random.Range(1f, 1.5f);
+        moveSpeed = 0.5f;//Random.Range(1f, 1.5f);
         StartCoroutine(TrackingPlayerCo());
     }
 
