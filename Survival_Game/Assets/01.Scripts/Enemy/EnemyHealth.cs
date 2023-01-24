@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : LivingEntity
 {
-    [SerializeField] private float dustEtScale = 1;
-
     private SpriteRenderer sr;
-    private WaitForSeconds hitDelay = new WaitForSeconds(.1f);
 
     private void Awake()
     {
@@ -16,7 +13,6 @@ public class EnemyHealth : LivingEntity
 
     public override void OnDamage(float damage)
     {
-        if (dead) return;
         base.OnDamage(damage);
     }
 

@@ -20,6 +20,8 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable
 
     public virtual void OnDamage(float damage)
     {
+        if (dead) return;
+
         health -= damage;
         if (health <= 0)
         {

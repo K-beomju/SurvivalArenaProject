@@ -18,6 +18,6 @@ public class HealthBar : MonoBehaviour
 
     private void Update()    
     {
-        transform.position = Camera.main.WorldToScreenPoint(GameManager.playerTrm().position - new Vector3(0,0.5f));
+        //transform.position = Camera.main.WorldToScreenPoint(GameManager.playerTrm().position - new Vector3(0,0.5f));
     }
 }
