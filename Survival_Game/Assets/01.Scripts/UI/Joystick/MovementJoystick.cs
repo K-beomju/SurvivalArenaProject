@@ -19,7 +19,7 @@ public class MovementJoystick : MonoBehaviour
     {
         joystickOriginalPos = joystickBG.transform.position;
         joystickRadius = joystickBG.GetComponent<RectTransform>().sizeDelta.y / 3;
-        ActiveJoystick(false);
+        //ActiveJoystick(false);
     }
 
     public void PointerDown()
@@ -50,7 +50,7 @@ public class MovementJoystick : MonoBehaviour
         joystickVec = Vector2.zero;
         joystick.transform.position = joystickOriginalPos;
         joystickBG.transform.position = joystickOriginalPos;
-        ActiveJoystick(false);
+        //ActiveJoystick(false);
     }
 
     public void ActiveJoystick(bool isActive)
