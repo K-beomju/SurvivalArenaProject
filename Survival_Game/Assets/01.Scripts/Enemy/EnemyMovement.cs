@@ -8,20 +8,17 @@ public class EnemyMovement : MonoBehaviour
 
     private SpriteRenderer sr;
     private EnemyHealth eh;
-    private Animator anim;
 
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         eh = GetComponent<EnemyHealth>();
-        anim = GetComponent<Animator>();
     }
 
     private void Start()
     {
         moveSpeed = Random.Range(1f, 1.5f);
         StartCoroutine(TrackingPlayerCo());
-        anim.enabled = true;
     }
 
 
@@ -36,8 +33,6 @@ public class EnemyMovement : MonoBehaviour
 
             yield return null;
         }
-
-        anim.enabled = false;
     }
 
 }

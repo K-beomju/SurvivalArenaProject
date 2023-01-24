@@ -4,19 +4,10 @@ using UnityEngine;
 
 public class EnemyHealth : LivingEntity
 {
-    private SpriteRenderer sr;
-
-    private void Awake()
-    {
-        sr = GetComponent<SpriteRenderer>();
-    }
-
     public override void OnDamage(float damage)
     {
         base.OnDamage(damage);
     }
-
- 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
