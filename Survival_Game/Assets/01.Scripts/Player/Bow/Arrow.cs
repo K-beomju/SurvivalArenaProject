@@ -29,6 +29,16 @@ public class Arrow : MonoBehaviour
         tr.Clear();
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            EnemyHealth eh = other.GetComponent<EnemyHealth>();
+            eh.OnDamage(1);
+            gameObject.SetActive(false);
+        }
+    }
+
   
 
   

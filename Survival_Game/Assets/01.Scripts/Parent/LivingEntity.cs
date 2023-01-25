@@ -11,7 +11,7 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable
     public bool dead { get; protected set; }
 
     public event Action OnDeath;
-
+    
     protected virtual void OnEnable()
     {
         dead = false;
@@ -43,4 +43,6 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable
             dead = true;
         }
     }
+
+    
 }

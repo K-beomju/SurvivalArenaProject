@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81894d7b0070a64eb2539a942a8d3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRadius: 3
+  attackRadius: 5
   enemy: {fileID: 0}
 --- !u!61 &2159043160394768955
 BoxCollider2D:
