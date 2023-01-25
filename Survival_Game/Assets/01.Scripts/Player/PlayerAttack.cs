@@ -21,10 +21,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.IsPlayerDead()) return;
-
-        IbowAnim.BowAttackAnim(FindNearestObjectByEnemy());
-        bowRot.AngleToWardsEnemy(enemy != null && enemy.activeSelf , enemy);
+        IbowAnim.BowAttackAnim(FindNearestObjectByEnemy() && !GameManager.IsPlayerDead());
+        bowRot.AngleToWardsEnemy(enemy != null && enemy.activeSelf && !GameManager.IsPlayerDead(), enemy);
     }
 
     public bool FindNearestObjectByEnemy()

@@ -15,14 +15,18 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         IplayerAnim = GetComponent<IPlayerAnimation>();
+        GameManager.instance.ph.OnDeath += () => { playerSpeed = 0; };
+
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = movementJoystick.joystickVec.y != 0 ? rb.velocity 
-        = new Vector2(movementJoystick.joystickVec.x * playerSpeed, 
+        if (GameManager.IsPlayerDead()) return;
+
+        rb.velocity = movementJoystick.joystickVec.y != 0 ? rb.velocity
+        = new Vector2(movementJoystick.joystickVec.x * playerSpeed,
         movementJoystick.joystickVec.y * playerSpeed) : rb.velocity = Vector2.zero;
-        
+
         IplayerAnim.SetDirection(Vector2.ClampMagnitude(rb.velocity, 1));
     }
 

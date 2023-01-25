@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     }
 
     private GameObject player;
-    private PlayerHealth ph;
+    public PlayerHealth ph {get; set;}
 
 
 

@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce936c6f3b9c5094e9bf71062ec32d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHealth: 10
+  initHealth: 1
   hpBar: {fileID: 679224160141208839}
 --- !u!114 &2159043160394768953
 MonoBehaviour:
@@ -1441,7 +1441,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2159043160394768963}
-  - component: {fileID: 2159043160394768968}
   - component: {fileID: 2159043160394768965}
   - component: {fileID: 2159043160394768953}
   - component: {fileID: 2159043160394768952}
@@ -1553,22 +1552,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2159043160394768968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2159043160394768961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 927f621cd8358477083bceb1fbee54bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <playerHealth>k__BackingField: {fileID: 0}
-  <playerAnim>k__BackingField: {fileID: 0}
-  <playerAttack>k__BackingField: {fileID: 0}
-  <playerMovement>k__BackingField: {fileID: 0}
 --- !u!212 &2159043161295110056
 SpriteRenderer:
   m_ObjectHideFlags: 0
