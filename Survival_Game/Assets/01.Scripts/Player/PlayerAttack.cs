@@ -10,56 +10,38 @@ public class PlayerAttack : MonoBehaviour
 
     public GameObject enemy;
 
-    private BowAnimation bowAnim;
+    private IBowAnimation IbowAnim;
 
     private void Awake()
     {
-        bowAnim = GetComponentInChildren<BowAnimation>();
+        IbowAnim = GetComponentInChildren<IBowAnimation>();
     }
-
- 
 
     private void Update()
     {
-        bowAnim.BowAttackAnim(FindNearestObjectByEnemy() && !GameManager.IsPlayerDead());
+        IbowAnim.BowAttackAnim(FindNearestObjectByEnemy() && !GameManager.IsPlayerDead());
     }
 
     public bool FindNearestObjectByEnemy()
     {
-        try
-        {
-
-            var objects = GameObject.FindGameObjectsWithTag("Enemy").ToList();
-
+        var objects = Physics2D.OverlapCircleAll(transform.position, attackRadius, LayerMask.GetMask("Enemy"));
+        if(objects.Length>0){
             var neareastObject = objects
-                .OrderBy(obj =>
+            .OrderBy(obj =>
             {
                 return Vector3.Distance(transform.position, obj.transform.position);
             })
-            .FirstOrDefault();
+            .First();
 
-            Vector3 offset = neareastObject.transform.position - transform.position;
-            float sqrLen = offset.sqrMagnitude;
-
-            bool inRadiusEnemy = sqrLen < Mathf.Pow(attackRadius, 2) ? true : false;
-
-
-            if (inRadiusEnemy && neareastObject.activeSelf)
-                enemy = neareastObject;
+            if (neareastObject.gameObject.activeSelf)
+                enemy = neareastObject.gameObject;
             else
                 enemy = null;
 
-
-            return inRadiusEnemy;
+            return true;
         }
-        catch (NullReferenceException ne)
-        {
-            //print(ne);
-            enemy = null;
-            return false;
-        }
-
-
+        enemy = null;
+        return false;
     }
 
 

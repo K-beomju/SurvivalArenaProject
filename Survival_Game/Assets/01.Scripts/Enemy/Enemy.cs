@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public EnemyHealth Health { get; set; }
-    public EnemyMovement Movement { get; set; }
+    public EnemyHealth enemyHealth { get; set; }
+    public EnemyMovement enemyMovement { get; set; }
+
+    public SpriteRenderer sr { get; set; }
 
     private void Awake() 
     {
-        Health = GetComponent<EnemyHealth>();
-        Movement = GetComponent<EnemyMovement>();
+        enemyHealth = GetComponent<EnemyHealth>();
+        enemyMovement = GetComponent<EnemyMovement>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     

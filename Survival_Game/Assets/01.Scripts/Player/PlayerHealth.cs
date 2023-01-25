@@ -17,12 +17,23 @@ public class PlayerHealth : LivingEntity
         hpBar.SetFill(health, initHealth);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    public override void Die()  
     {
-        if(other.CompareTag("Enemy"))
+        base.Die();
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        if(other.gameObject.CompareTag("Enemy"))
         {
             OnDamage(1f);
-        }    
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
+          
     }
 
 }

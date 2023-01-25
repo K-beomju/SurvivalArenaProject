@@ -9,15 +9,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float playerSpeed;
 
     private Rigidbody2D rb;
-    private PlayerAnimation playerAnim;
-    private PlayerAttack playerAk;
-
+    private IPlayerAnimation IplayerAnim;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerAnim = GetComponent<PlayerAnimation>();
-        playerAk = GetComponent<PlayerAttack>();
+        IplayerAnim = GetComponent<IPlayerAnimation>();
     }
 
     private void FixedUpdate()
@@ -26,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         = new Vector2(movementJoystick.joystickVec.x * playerSpeed, 
         movementJoystick.joystickVec.y * playerSpeed) : rb.velocity = Vector2.zero;
         
-        playerAnim.SetDirection(Vector2.ClampMagnitude(rb.velocity, 1));
+        IplayerAnim.SetDirection(Vector2.ClampMagnitude(rb.velocity, 1));
     }
 
 }

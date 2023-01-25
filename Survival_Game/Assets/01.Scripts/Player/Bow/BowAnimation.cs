@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BowAnimation : MonoBehaviour
+public class BowAnimation : MonoBehaviour, IBowAnimation
 {
     private Animator anim;
     private readonly int hashAttack = Animator.StringToHash("isAttack");

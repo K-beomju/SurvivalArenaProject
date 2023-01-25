@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour
+public class PlayerAnimation : MonoBehaviour,IPlayerAnimation
 {
     public static readonly string[] staticDirections = { "Static N", "Static W", "Static S", "Static E" };
     public static readonly string[] runDirections = { "Run N", "Run W", "Run S", "Run E" };
@@ -50,6 +50,11 @@ public class PlayerAnimation : MonoBehaviour
 
         float stepCount = angle / step;
         return Mathf.FloorToInt(stepCount);
+    }
+
+    public void DieAnimation()
+    {
+        anim.SetTrigger("Die");
     }
 
 }
