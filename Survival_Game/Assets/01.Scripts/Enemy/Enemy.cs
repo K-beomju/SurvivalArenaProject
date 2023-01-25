@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     public SpriteRenderer sr { get; set; }
 
-    private void Awake() 
+    protected virtual void Awake() 
     {
         enemyHealth = GetComponent<EnemyHealth>();
         enemyMovement = GetComponent<EnemyMovement>();

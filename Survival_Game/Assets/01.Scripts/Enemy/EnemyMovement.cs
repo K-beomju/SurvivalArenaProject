@@ -7,8 +7,9 @@ public class EnemyMovement : Enemy
     private float moveSpeed = 0.5f;
     private Vector3 playerPos;
     private Vector3 direction;
+    private EnemyHealth eh;
 
-    private void Start() 
+    private void OnEnable() 
     {
         StartCoroutine(TrackingPlayerCo());
     }

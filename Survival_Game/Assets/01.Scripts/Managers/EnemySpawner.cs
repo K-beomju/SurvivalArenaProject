@@ -43,6 +43,7 @@ public class EnemySpawner : MonoBehaviour
         {
             enemy = PoolManager.GetEnemyObject();
             enemy.transform.position = spawnPos;
+            enemy.gameObject.SetActive(true);
         }
         else
         {
