@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce936c6f3b9c5094e9bf71062ec32d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHealth: 10
+  initHealth: 100
   hpBar: {fileID: 679224160141208839}
 --- !u!114 &2159043160394768953
 MonoBehaviour:
@@ -1470,7 +1470,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0

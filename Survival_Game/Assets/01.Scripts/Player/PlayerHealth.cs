@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerHealth : LivingEntity
 {
     [SerializeField] private HealthBar hpBar;
+    private float damageDelay = 0.1f;
+    private float nextDamageTime;
+
 
     private void Start() 
     {
@@ -23,17 +26,16 @@ public class PlayerHealth : LivingEntity
         
     }
 
-    private void OnCollisionEnter2D(Collision2D other) 
+    private void OnCollisionStay2D(Collision2D other) 
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
-            OnDamage(1f);
+            if(Time.time > nextDamageTime)
+            {
+                OnDamage(1f);
+                nextDamageTime = Time.time + damageDelay;
+            }
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) 
-    {
-          
     }
 
 }

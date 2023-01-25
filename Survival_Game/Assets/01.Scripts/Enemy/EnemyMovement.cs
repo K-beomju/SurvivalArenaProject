@@ -5,12 +5,12 @@ using UnityEngine;
 public class EnemyMovement : Enemy
 {
     private float moveSpeed = 0.5f;
-    private Vector3 playerPos;
+    private Transform playerTrm;
     private Vector3 direction;
-    private EnemyHealth eh;
 
     private void OnEnable() 
     {
+        playerTrm = GameManager.playerTrm();
         StartCoroutine(TrackingPlayerCo());
     }
 
@@ -18,8 +18,7 @@ public class EnemyMovement : Enemy
     {
         while (!GameManager.IsPlayerDead() || !enemyHealth.dead)
         {
-            playerPos = GameManager.playerTrm().position;
-            direction = (playerPos - transform.position).normalized;
+            direction = (playerTrm.position - transform.position).normalized;
             transform.position += direction * moveSpeed * Time.deltaTime;
 
             sr.flipX = direction.x < 0 ? true : false;
