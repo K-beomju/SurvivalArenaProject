@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private float attackRadius;
 
-    public GameObject enemy;
+    private GameObject enemy;
 
     private IBowAnimation IbowAnim;
     private BowRotation bowRot;
