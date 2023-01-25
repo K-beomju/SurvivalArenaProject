@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class EnemyMovement : Enemy
 {
-    private float moveSpeed;
+    private float moveSpeed = 0.5f;
+    private Vector3 playerPos;
+    private Vector3 direction;
 
-    private void Start()
+    private void Start() 
     {
-        moveSpeed = 0.5f;
         StartCoroutine(TrackingPlayerCo());
     }
 
-    private IEnumerator TrackingPlayerCo()
+    public IEnumerator TrackingPlayerCo()
     {
-        while (!GameManager.IsPlayerDead() && !enemyHealth.dead)
+        while (!GameManager.IsPlayerDead() || !enemyHealth.dead)
         {
-            Vector3 dir = GameManager.playerTrm().position - transform.position;
-            transform.Translate(dir.normalized * moveSpeed * Time.deltaTime);
+            playerPos = GameManager.playerTrm().position;
+            direction = (playerPos - transform.position).normalized;
+            transform.position += direction * moveSpeed * Time.deltaTime;
 
-            sr.flipX = dir.x < 0 ? true : false;
+            sr.flipX = direction.x < 0 ? true : false;
             yield return null;
         }
     }

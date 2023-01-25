@@ -7,10 +7,12 @@ public class PoolManager : MonoBehaviour
 {
     #region ObjectPrefabs
     public GameObject arrowPrefab;
+    public GameObject enemyPrefab;
     #endregion
 
     #region ObjectPools
     private ObjectPooling<Arrow> arrowPool;
+    private ObjectPooling<Enemy> enemyPool;
     #endregion
 
     private Dictionary<string, int> effectDic = new Dictionary<string, int>();
@@ -45,12 +47,17 @@ public class PoolManager : MonoBehaviour
             Destroy(this.gameObject);
 
         arrowPool = new ObjectPooling<Arrow>(arrowPrefab, this.transform, 10);
-
+        enemyPool = new ObjectPooling<Enemy>(enemyPrefab, this.transform , 10);
 
     }
 
     public static Arrow GetArrowObject()
     {
         return instance.arrowPool.GetOrCreate();
+    }
+
+    public static Enemy GetEnemyObject()
+    {
+        return instance.enemyPool.GetOrCreate();
     }
 }

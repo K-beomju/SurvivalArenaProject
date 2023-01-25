@@ -768,6 +768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 6175801955313963079, guid: b8f69358399683d41bbd4b7fab5592bb, type: 3}
+  enemyPrefab: {fileID: 3751123655627273966, guid: 4365db84e0dfd4bc9b33b21ec1c4fd0b, type: 3}
 --- !u!114 &2071864258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,7 +807,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d76cf4c0f53b4ac793c3eb87c3eaa30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3751123655627273966, guid: 4365db84e0dfd4bc9b33b21ec1c4fd0b, type: 3}
   spawnInterval: 3
   spawnRadius: 10
   duration: 900
@@ -1354,7 +1354,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRadius: 5
-  enemy: {fileID: 0}
 --- !u!61 &2159043160394768955
 BoxCollider2D:
   m_ObjectHideFlags: 0

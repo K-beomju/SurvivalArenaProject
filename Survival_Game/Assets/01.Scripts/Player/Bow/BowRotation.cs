@@ -10,7 +10,7 @@ public class BowRotation : MonoBehaviour
 
     private float angle;
 
-    public void AngleToWardsEnemy(bool checkEnemy , GameObject enemy)
+    public void AngleToWardsEnemy(bool checkEnemy, GameObject enemy)
     {
         if (checkEnemy)
         {
@@ -20,7 +20,7 @@ public class BowRotation : MonoBehaviour
         }
         else
         {
-            hand.rotation = Quaternion.Euler(0, 0, 40);
+            hand.rotation = Quaternion.Lerp(hand.rotation, Quaternion.Euler(0, 0, 40), 0.1f);
         }
     }
 

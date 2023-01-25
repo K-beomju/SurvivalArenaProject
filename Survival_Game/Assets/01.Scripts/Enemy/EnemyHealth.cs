@@ -18,6 +18,11 @@ public class EnemyHealth : LivingEntity
         materialPropertyBlock = new MaterialPropertyBlock();
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+    }
+
     public override void OnDamage(float damage)
     {
         base.OnDamage(damage);
@@ -33,7 +38,7 @@ public class EnemyHealth : LivingEntity
     public override void Die()
     {
         base.Die();
-        Destroy(this.gameObject);   //TODO : POOL
+        gameObject.SetActive(false);   //TODO : POOL
     }
 
      private void Update()

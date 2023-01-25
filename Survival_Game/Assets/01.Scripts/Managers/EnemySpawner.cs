@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    private Enemy enemy;
     public float spawnInterval = 5f;
     public float spawnRadius = 10f;
     public float duration = 900f;
@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (Time.time > endTime)
+        if (Time.time > endTime || GameManager.IsPlayerDead())
         {
             //stop spawning enemies
             return;
@@ -37,11 +37,12 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         // check if the spawn position is outside of the camera view
-        Vector3 spawnPos = RandomCircle(transform.position, spawnRadius);
+        Vector3 spawnPos = RandomCircle(GameManager.playerTrm().position, spawnRadius);
 
         if (!IsVisibleFrom(mainCamera, spawnPos))
         {
-            GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            enemy = PoolManager.GetEnemyObject();
+            enemy.transform.position = spawnPos;
         }
         else
         {
