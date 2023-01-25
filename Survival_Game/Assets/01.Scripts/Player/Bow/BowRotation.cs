@@ -6,32 +6,22 @@ using System.Linq;
 public class BowRotation : MonoBehaviour
 {
     [SerializeField] public Transform hand;
-
-    private PlayerAttack playerAk;
     private Vector3 enemyPos;
 
     private float angle;
 
-    private void Awake()
+    public void AngleToWardsEnemy(bool checkEnemy , GameObject enemy)
     {
-        playerAk = GetComponent<PlayerAttack>();
-    }
-
-    private void AngleToWardsEnemy()
-    {
-        enemyPos = playerAk.enemy.transform.position;
-        angle = Mathf.Atan2(enemyPos.y - transform.position.y, enemyPos.x - transform.position.x) * Mathf.Rad2Deg;
-        hand.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
-    }
-
-    private void Update()
-    {
-        if (playerAk.enemy != null && playerAk.enemy.activeSelf && !GameManager.IsPlayerDead())
-            AngleToWardsEnemy();
+        if (checkEnemy)
+        {
+            enemyPos = enemy.transform.position;
+            angle = Mathf.Atan2(enemyPos.y - transform.position.y, enemyPos.x - transform.position.x) * Mathf.Rad2Deg;
+            hand.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+        }
         else
-            hand.rotation = Quaternion.Euler(0,0,40);
-
+        {
+            hand.rotation = Quaternion.Euler(0, 0, 40);
+        }
     }
-
 
 }

@@ -11,15 +11,20 @@ public class PlayerAttack : MonoBehaviour
     public GameObject enemy;
 
     private IBowAnimation IbowAnim;
+    private BowRotation bowRot;
 
     private void Awake()
     {
         IbowAnim = GetComponentInChildren<IBowAnimation>();
+        bowRot = GetComponentInChildren<BowRotation>();
     }
 
     private void Update()
     {
-        IbowAnim.BowAttackAnim(FindNearestObjectByEnemy() && !GameManager.IsPlayerDead());
+        if(GameManager.IsPlayerDead()) return;
+
+        IbowAnim.BowAttackAnim(FindNearestObjectByEnemy());
+        bowRot.AngleToWardsEnemy(enemy != null && enemy.activeSelf , enemy);
     }
 
     public bool FindNearestObjectByEnemy()
