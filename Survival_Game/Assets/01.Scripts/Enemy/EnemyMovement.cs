@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : Enemy
 {
-    private float moveSpeed = 0.5f;
+    private float moveSpeed = 1.5f;
     private Transform playerTrm;
     private Vector3 direction;
 
