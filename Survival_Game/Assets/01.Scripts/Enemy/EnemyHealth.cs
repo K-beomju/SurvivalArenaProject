@@ -11,13 +11,6 @@ public class EnemyHealth : LivingEntity
     #endregion 
 
     public EnemyAbilities enemyAb;
-    private SpriteRenderer sr;
-
-
-    private void Awake()
-    {
-        sr = GetComponent<SpriteRenderer>();
-    }
 
     protected override void OnEnable()
     {

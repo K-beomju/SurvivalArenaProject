@@ -11,6 +11,13 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable
     public bool dead { get; protected set; }
 
     public event Action OnDeath;
+
+    public SpriteRenderer sr { get; set; }
+
+    private void Awake() 
+    {
+        sr = GetComponent<SpriteRenderer>();
+    }
     
     protected virtual void OnEnable()
     {

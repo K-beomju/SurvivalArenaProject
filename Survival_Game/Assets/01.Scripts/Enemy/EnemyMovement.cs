@@ -21,7 +21,7 @@ public class EnemyMovement : Enemy
             direction = (playerTrm.position - transform.position).normalized;
             transform.position += direction * moveSpeed * Time.deltaTime;
 
-            sr.flipX = direction.x < 0 ? true : false;
+            enemyHealth.sr.flipX = direction.x < 0 ? true : false;
             yield return null;
         }
     }
