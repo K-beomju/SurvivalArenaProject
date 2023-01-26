@@ -738,7 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 6175801955313963079, guid: b8f69358399683d41bbd4b7fab5592bb, type: 3}
-  enemyPrefab: {fileID: 3751123655627273966, guid: 4365db84e0dfd4bc9b33b21ec1c4fd0b, type: 3}
+  enemyPrefab: {fileID: 4840811550684476458, guid: 704d7987362da4c37bbf62f2785f275f, type: 3}
 --- !u!114 &2071864258
 MonoBehaviour:
   m_ObjectHideFlags: 0

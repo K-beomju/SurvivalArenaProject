@@ -8,16 +8,15 @@ public class EnemyHealth : LivingEntity
     private bool isHit = false;
     private float hitTime = 0f;                         // 코루틴을 사용할 때보다 성능 향샹 
     private float hitColorDuration = 0.1f;
-    private Renderer ren;
-    private MaterialPropertyBlock materialPropertyBlock; // 사용하면 색상을 변경할 때마다 기존의 재질을 새로 생성하지 않아도 되기 때문에 메모리 사용량 줄임 
     #endregion 
 
     public EnemyAbilities enemyAb;
+    private SpriteRenderer sr;
+
 
     private void Awake()
     {
-        ren = GetComponent<Renderer>();
-        materialPropertyBlock = new MaterialPropertyBlock();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     protected override void OnEnable()
@@ -33,23 +32,22 @@ public class EnemyHealth : LivingEntity
         #region 피격 Renderer 이벤트 
         isHit = true;
         hitTime = Time.time;
-        materialPropertyBlock.SetColor("_Color", Color.red);
-        ren.SetPropertyBlock(materialPropertyBlock);
+        sr.color = Color.red;
         #endregion
     }
 
     public override void Die()
     {
         base.Die();
-        gameObject.SetActive(false);   //TODO : POOL
+        gameObject.SetActive(false);  
+        sr.color = Color.white;
     }
 
     private void Update()
     {
         if (hitTime + hitColorDuration <= Time.time && isHit)
         {
-            materialPropertyBlock.SetColor("_Color", Color.white);
-            ren.SetPropertyBlock(materialPropertyBlock);
+            sr.color = Color.white;
             hitTime = 0f;
             isHit = false;
         }
