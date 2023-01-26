@@ -16,7 +16,7 @@ public class EnemyMovement : Enemy
 
     public IEnumerator TrackingPlayerCo()
     {
-        while (!GameManager.IsPlayerDead() || !enemyHealth.dead)
+        while (!GameManager.IsPlayerDead())
         {
             direction = (playerTrm.position - transform.position).normalized;
             transform.position += direction * moveSpeed * Time.deltaTime;

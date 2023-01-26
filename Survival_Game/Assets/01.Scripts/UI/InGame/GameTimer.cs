@@ -8,10 +8,8 @@ public class GameTimer : MonoBehaviour
     private Text timerText;
     private float startTime;
     private float t;
-    private string minutes;
-    private string seconds;
 
-    void Start()
+    void Awake()
     {
         timerText = GetComponent<Text>();
         startTime = Time.time;
@@ -19,9 +17,10 @@ public class GameTimer : MonoBehaviour
 
     void Update()
     {
-        t = Time.time - startTime;
-        minutes = ((int)t / 60).ToString("00");
-        seconds = ((int)t % 60).ToString("00");
-        timerText.text = minutes + ":" + seconds;
+        if (!GameManager.IsPlayerDead())
+        {
+            t = Time.time - startTime;
+            timerText.text = string.Format("{0:00}:{1:00}", (int)t / 60, (int)t % 60);
+        }
     }
 }
