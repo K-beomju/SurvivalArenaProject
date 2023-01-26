@@ -12,6 +12,8 @@ public class EnemyHealth : LivingEntity
     private MaterialPropertyBlock materialPropertyBlock; // 사용하면 색상을 변경할 때마다 기존의 재질을 새로 생성하지 않아도 되기 때문에 메모리 사용량 줄임 
     #endregion 
 
+    public EnemyAbilities enemyAb;
+
     private void Awake()
     {
         ren = GetComponent<Renderer>();
@@ -21,6 +23,7 @@ public class EnemyHealth : LivingEntity
     protected override void OnEnable()
     {
         base.OnEnable();
+        health = enemyAb.health;
     }
 
     public override void OnDamage(float damage)
@@ -41,7 +44,7 @@ public class EnemyHealth : LivingEntity
         gameObject.SetActive(false);   //TODO : POOL
     }
 
-     private void Update()
+    private void Update()
     {
         if (hitTime + hitColorDuration <= Time.time && isHit)
         {
@@ -49,6 +52,14 @@ public class EnemyHealth : LivingEntity
             ren.SetPropertyBlock(materialPropertyBlock);
             hitTime = 0f;
             isHit = false;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            GameManager.instance.ph.OnDamage(enemyAb.attack);
         }
     }
 

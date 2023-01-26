@@ -5,34 +5,40 @@ using UnityEngine;
 public class PlayerHealth : LivingEntity
 {
     [SerializeField] private HealthBar hpBar;
+
+    public bool isHit { get; set; } = false;
     private float damageDelay = 0.1f;
     private float nextDamageTime;
 
 
-    private void Start() 
+    private void Start()
     {
         hpBar.SetFill(health, initHealth);
     }
 
     public override void OnDamage(float damage)
     {
+        if(!isHit) return;
+        
         base.OnDamage(damage);
         hpBar.SetFill(health, initHealth);
+        isHit = false;
+
     }
 
-    public override void Die()  
+    public override void Die()
     {
         base.Die();
-        
+
     }
 
-    private void OnCollisionStay2D(Collision2D other) 
+    private void OnCollisionStay2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            if(Time.time > nextDamageTime)
+            if (Time.time > nextDamageTime && !isHit)
             {
-                OnDamage(1f);
+                isHit = true;
                 nextDamageTime = Time.time + damageDelay;
             }
         }
