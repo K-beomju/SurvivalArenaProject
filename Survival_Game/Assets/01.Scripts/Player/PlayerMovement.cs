@@ -23,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void Update() 
+    {
+        LockScreenCamera();
+    }
+
     private void FixedUpdate()
     {
         if (GameManager.IsPlayerDead()) return;
@@ -32,6 +37,19 @@ public class PlayerMovement : MonoBehaviour
         movementJoystick.joystickVec.y * playerSpeed) : rb.velocity = Vector2.zero;
 
         IplayerAnim.SetDirection(Vector2.ClampMagnitude(rb.velocity, 1));
+    }
+
+
+    public void LockScreenCamera()
+    {
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        
+        if (pos.x < 0f) pos.x = 0f;
+        if (pos.x > 1f) pos.x = 1f;
+        if (pos.y > 1f) pos.y = 1f;
+        if (pos.y < 0f) pos.y = 0f;
+
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
 
 }

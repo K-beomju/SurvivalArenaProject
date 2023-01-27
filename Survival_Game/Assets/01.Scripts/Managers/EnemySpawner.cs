@@ -11,6 +11,9 @@ public class EnemySpawner : MonoBehaviour
     private float spawnTimer;
     private float endTime;
 
+    private float radius = 10; // the radius of the circular formation
+    private float goldenRatio = (1 + Mathf.Sqrt(5)) / 2; // the golden ratio
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -70,5 +73,21 @@ public class EnemySpawner : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+
+    // 원형 테두리 생성
+    void SpawnCircleEnemy(int spawnCount = 10)
+    {
+        float angle = 0; // the current angle
+        for (int i = 0; i < spawnCount; i++) {
+            float x = radius * Mathf.Cos(angle);
+            float y = radius * Mathf.Sin(angle);
+            enemy = PoolManager.GetEnemyObject();
+            enemy.transform.position = new Vector2(x, y) + (Vector2)GameManager.playerTrm().position;
+            enemy.gameObject.SetActive(true);
+            enemy.transform.parent = transform;
+            angle += Mathf.PI * 2 * goldenRatio;
+        }
     }
 }
