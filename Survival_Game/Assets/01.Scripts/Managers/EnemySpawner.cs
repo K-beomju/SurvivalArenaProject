@@ -39,18 +39,22 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        // check if the spawn position is outside of the camera view
-        Vector3 spawnPos = RandomCircle(GameManager.playerTrm().position, spawnRadius);
+        for (int i = 0; i < 5; i++)
+        {
+            // check if the spawn position is outside of the camera view
+            Vector3 spawnPos = RandomCircle(GameManager.playerTrm().position, spawnRadius);
 
-        if (!IsVisibleFrom(mainCamera, spawnPos))
-        {
-            enemy = PoolManager.GetEnemyObject();
-            enemy.transform.position = spawnPos;
-            enemy.gameObject.SetActive(true);
-        }
-        else
-        {
-            spawnTimer = 0;
+            if (!IsVisibleFrom(mainCamera, spawnPos))
+            {
+                enemy = PoolManager.GetEnemyObject();
+                enemy.transform.position = spawnPos;
+                enemy.gameObject.SetActive(true);
+            }
+            else
+            {
+                spawnTimer = 0;
+            }
+
         }
     }
 
@@ -80,7 +84,8 @@ public class EnemySpawner : MonoBehaviour
     void SpawnCircleEnemy(int spawnCount = 10)
     {
         float angle = 0; // the current angle
-        for (int i = 0; i < spawnCount; i++) {
+        for (int i = 0; i < spawnCount; i++)
+        {
             float x = radius * Mathf.Cos(angle);
             float y = radius * Mathf.Sin(angle);
             enemy = PoolManager.GetEnemyObject();

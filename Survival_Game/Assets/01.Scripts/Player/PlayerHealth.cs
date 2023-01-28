@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerHealth : LivingEntity
 {
     [SerializeField] private HealthBar hpBar;
+    [SerializeField] private HitEffect hitEffect;
 
     public bool isHit { get; set; } = false;
-    private float damageDelay = 0.1f;
+    private float damageDelay = 0.5f;
     private float nextDamageTime;
 
 
@@ -22,6 +23,7 @@ public class PlayerHealth : LivingEntity
         
         base.OnDamage(damage);
         hpBar.SetFill(health, initHealth);
+        hitEffect.HitScreen();
         isHit = false;
 
     }
