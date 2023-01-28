@@ -7,7 +7,7 @@ public class GameTimer : MonoBehaviour
 {
     private Text timerText;
     private float startTime;
-    private float t;
+    public float t { get; set; }
 
     void Awake()
     {

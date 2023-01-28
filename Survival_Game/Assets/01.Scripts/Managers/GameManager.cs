@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
     public PlayerHealth ph {get; set;}
-
+    [SerializeField] private GameOverPanel gameOverPanel;
 
 
     private void Awake()
@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
         player = GameObject.Find("Player");
 
         ph = player.GetComponent<PlayerHealth>();
+
+        ph.OnDeath += () => { gameOverPanel.gameObject.SetActive(true); };
     }
 
     public static Transform playerTrm()
