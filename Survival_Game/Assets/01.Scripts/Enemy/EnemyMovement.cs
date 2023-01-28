@@ -10,6 +10,7 @@ public class EnemyMovement : Enemy
 
     private void OnEnable() 
     {
+        anim.enabled = true;
         playerTrm = GameManager.playerTrm();
         StartCoroutine(TrackingPlayerCo());
     }
@@ -24,6 +25,9 @@ public class EnemyMovement : Enemy
             enemyHealth.sr.flipX = direction.x < 0 ? true : false;
             yield return null;
         }
+
+        yield return new WaitForSeconds(1);
+        anim.enabled = false;
     }
 
 }

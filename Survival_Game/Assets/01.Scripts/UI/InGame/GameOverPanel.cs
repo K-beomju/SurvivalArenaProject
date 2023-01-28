@@ -6,15 +6,25 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using UnityEngine.SceneManagement;
 
 public class GameOverPanel : MonoBehaviour
 {
     [SerializeField] private Text curTimeText;
     [SerializeField] private Text bestTimeText;
 
+    [SerializeField] private Image rankImage;
+    [SerializeField] private Sprite[] rankSprites;
+
     [SerializeField] private GameTimer gameTimer;
 
+    [SerializeField] private Button startButton;
+    [SerializeField] private Button rankRutton;
+
+
+
     private static string encryptionKey = "your_unique_encryption_key";
+
 
     public void Start()
     {
@@ -35,6 +45,26 @@ public class GameOverPanel : MonoBehaviour
 
         int bestTime = LoadTime();
         bestTimeText.text = string.Format("{0:00}:{1:00}", bestTime / 60, bestTime % 60);
+
+        switch (time)
+        {
+            case int n when (n <= 180):
+                rankImage.sprite = rankSprites[0];
+                break;
+            case int n when (n <= 600):
+                rankImage.sprite = rankSprites[1];
+                break;
+            case int n when (n <= 900):
+                rankImage.sprite = rankSprites[2];
+                break;
+            case int n when (n <= 1200):
+                rankImage.sprite = rankSprites[3];
+                break;
+            default:
+                rankImage.sprite = rankSprites[4];
+                break;
+        }
+
     }
 
 
