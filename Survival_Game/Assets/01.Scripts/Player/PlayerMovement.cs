@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         IplayerAnim = GetComponent<IPlayerAnimation>();
-        GameManager.instance.ph.OnDeath += () => 
+        GameManager.Instance.ph.OnDeath += () => 
         { 
             playerSpeed = 0; 
             rb.velocity = Vector2.zero;

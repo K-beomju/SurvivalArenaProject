@@ -13,7 +13,7 @@ public class PlayerAnimation : MonoBehaviour,IPlayerAnimation
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        GameManager.instance.ph.OnDeath += DieAnimation;
+        GameManager.Instance.ph.OnDeath += DieAnimation;
     }
 
     public void SetDirection(Vector2 direction)

@@ -25,6 +25,10 @@ public class GameOverPanel : MonoBehaviour
 
     private static string encryptionKey = "your_unique_encryption_key";
 
+    private void Awake() 
+    {
+        startButton.onClick.AddListener(() => SceneManager.LoadScene("GameScene"));
+    }
 
     public void Start()
     {

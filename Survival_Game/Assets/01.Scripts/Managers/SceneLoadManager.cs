@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneManager : Singleton<SceneManager>
+public class SceneLoadManager : Singleton<SceneLoadManager>
 {
 
     public void LoadScene(string sceneName)

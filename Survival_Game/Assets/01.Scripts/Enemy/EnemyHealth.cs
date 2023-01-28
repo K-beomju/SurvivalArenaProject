@@ -50,7 +50,7 @@ public class EnemyHealth : LivingEntity
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.ph.OnDamage(enemyAb.attack);
+            GameManager.Instance.ph.OnDamage(enemyAb.attack);
         }
     }
 
