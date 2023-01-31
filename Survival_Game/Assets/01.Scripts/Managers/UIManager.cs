@@ -25,6 +25,14 @@ public class UIManager : MonoBehaviour
         startButton.onClick.AddListener(() => GameStart());    
     }
 
+    private void Start() 
+    {
+        Sequence sq = DOTween.Sequence();
+        sq.Append(titleText.DOAnchorPosY(300,3).SetEase(titleEase));
+        sq.Join(titleButtonGroup.DOAnchorPosY(0,3).SetEase(titleEase));
+
+    }
+
 
     public void GameStart()
     {
