@@ -14,6 +14,8 @@ public class EnemySpawner : MonoBehaviour
     private float radius = 10; // the radius of the circular formation
     private float goldenRatio = (1 + Mathf.Sqrt(5)) / 2; // the golden ratio
 
+    public bool isStart = false;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -23,6 +25,8 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
+        if(!isStart) return;
+
         if (Time.time > endTime || GameManager.IsPlayerDead())
         {
             //stop spawning enemies

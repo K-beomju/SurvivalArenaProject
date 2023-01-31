@@ -13,6 +13,7 @@ public class HealthBar : MonoBehaviour
 
     public void SetFill(float current, float max)
     {
+        if(hpSlider != null)
         hpSlider.value = Mathf.Clamp(current / max, 0, 1);
     }
 
