@@ -17,6 +17,9 @@ public class ShamanBullet : MonoBehaviour
 
     public void Fire()
     {
+        float angle = Mathf.Atan2(transform.position.y - GameManager.playerTrm().position.y, transform.position.x - GameManager.playerTrm().position.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+
         dir = (transform.position - GameManager.playerTrm().position).normalized;
         rb.velocity = dir * -power;
     }
