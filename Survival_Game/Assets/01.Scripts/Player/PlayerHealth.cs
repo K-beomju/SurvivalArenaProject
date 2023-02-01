@@ -19,8 +19,8 @@ public class PlayerHealth : LivingEntity
 
     public override void OnDamage(float damage)
     {
-        if(!isHit) return;
-        
+        if (!isHit) return;
+
         base.OnDamage(damage);
         hpBar.SetFill(health, initHealth);
         hitEffect.HitScreen();
@@ -38,12 +38,18 @@ public class PlayerHealth : LivingEntity
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (Time.time > nextDamageTime && !isHit)
-            {
-                isHit = true;
-                nextDamageTime = Time.time + damageDelay;
-            }
+            CheckHitDelay();
         }
     }
+
+    public void CheckHitDelay()
+    {
+        if (Time.time > nextDamageTime && !isHit)
+        {
+            isHit = true;
+            nextDamageTime = Time.time + damageDelay;
+        }
+    }
+
 
 }
