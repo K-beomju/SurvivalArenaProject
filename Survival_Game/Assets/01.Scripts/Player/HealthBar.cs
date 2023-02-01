@@ -17,8 +17,10 @@ public class HealthBar : MonoBehaviour
         hpSlider.value = Mathf.Clamp(current / max, 0, 1);
     }
 
-    private void Update()    
+    private void FixedUpdate()    
     {
-        //transform.position = Camera.main.WorldToScreenPoint(GameManager.playerTrm().position - new Vector3(0,0.5f));
+        transform.position = Camera.main.WorldToScreenPoint(GameManager.Instance.hpTrm.position);
     }
+
+    
 }

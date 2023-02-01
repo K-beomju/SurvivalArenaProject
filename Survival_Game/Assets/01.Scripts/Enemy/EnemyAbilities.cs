@@ -1,5 +1,13 @@
 using UnityEngine;
 
+
+
+public enum EnemyType : int
+{
+    Normal = 0,
+    Shaman
+}
+
 [CreateAssetMenu(menuName = "Enemy/Abilities")]
 public class EnemyAbilities : ScriptableObject
 {

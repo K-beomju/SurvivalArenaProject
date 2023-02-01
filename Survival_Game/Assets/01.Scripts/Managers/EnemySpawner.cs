@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
 
             if (!IsVisibleFrom(mainCamera, spawnPos))
             {
-                enemy = PoolManager.GetEnemyObject();
+                enemy = PoolManager.GetEnemyObject(EnemyType.Normal);
                 enemy.transform.position = spawnPos;
                 enemy.gameObject.SetActive(true);
             }
@@ -92,7 +92,7 @@ public class EnemySpawner : MonoBehaviour
         {
             float x = radius * Mathf.Cos(angle);
             float y = radius * Mathf.Sin(angle);
-            enemy = PoolManager.GetEnemyObject();
+            enemy = PoolManager.GetEnemyObject(EnemyType.Normal);
             enemy.transform.position = new Vector2(x, y) + (Vector2)GameManager.playerTrm().position;
             enemy.gameObject.SetActive(true);
             enemy.transform.parent = transform;

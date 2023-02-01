@@ -20,6 +20,8 @@ public class EnemyHealth : LivingEntity
 
     public override void OnDamage(float damage)
     {
+        if(GameManager.IsPlayerDead()) return;
+
         base.OnDamage(damage);
 
         #region 피격 Renderer 이벤트 

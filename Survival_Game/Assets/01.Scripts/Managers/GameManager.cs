@@ -7,8 +7,8 @@ public class GameManager : Singleton<GameManager>
 {
     private GameObject player;
     public PlayerHealth ph {get; set;}
+    public Transform hpTrm;
     [SerializeField] private GameOverPanel gameOverPanel;
-
 
     private void Awake()
     {
