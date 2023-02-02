@@ -7,13 +7,8 @@ public class EnemyFire : Enemy
     [SerializeField] private ShamanBullet bullet;
     private bool isCheck = false;
 
-    float numberOfBullets = 10f;
-    float angleStep = 360f;
-    float currentAngle = 0f;
-
     private void OnEnable()
     {
-        angleStep /= numberOfBullets;
         anim.enabled = true;
         StartCoroutine(base.TrackingPlayerCo());
     }
