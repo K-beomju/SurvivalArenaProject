@@ -36,9 +36,4 @@ public class EnemyFire : Enemy
         }
         isCheck = false;
     }
-
-    public bool IsCheckPlayer()
-    {
-        return Vector2.Distance(transform.position, playerTrm.position) <= 5;
-    }
 }
