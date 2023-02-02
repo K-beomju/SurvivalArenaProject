@@ -19,7 +19,7 @@ public class PlayerHealth : LivingEntity
 
     public override void OnDamage(float damage)
     {
-        if (!isHit) return;
+        if (!isHit || GameManager.IsPlayerDead()) return;
 
         base.OnDamage(damage);
         hpBar.SetFill(health, initHealth);

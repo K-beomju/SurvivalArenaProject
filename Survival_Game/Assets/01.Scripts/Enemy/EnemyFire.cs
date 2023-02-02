@@ -27,12 +27,11 @@ public class EnemyFire : Enemy
 
     private IEnumerator FireBullet()
     {
+        if (GameManager.IsPlayerDead()) yield break;
 
-        while (IsCheckPlayer() || !GameManager.IsPlayerDead())
-        {
-            StraightShot();
-            yield return new WaitForSeconds(3);
-        }
+        StraightShot();
+        yield return new WaitForSeconds(3);
+
         isCheck = false;
     }
 

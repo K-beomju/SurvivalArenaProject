@@ -5,33 +5,28 @@ public class EnemySpawner : MonoBehaviour
     private Enemy enemy;
     public float spawnInterval = 5f;
     public float spawnRadius = 10f;
-    public float duration = 900f;
+    public float durationTimer = 0f;
 
     private Camera mainCamera;
     private float spawnTimer;
-    private float endTime;
 
     private float radius = 10; // the radius of the circular formation
     private float goldenRatio = (1 + Mathf.Sqrt(5)) / 2; // the golden ratio
 
     public bool isStart = false;
 
+    public static int enemyCount = 0;
+
     void Start()
     {
         mainCamera = Camera.main;
         spawnTimer = spawnInterval;
-        endTime = Time.time + duration;
     }
 
     void Update()
     {
-        if(!isStart) return;
-
-        if (Time.time > endTime || GameManager.IsPlayerDead())
-        {
-            //stop spawning enemies
-            return;
-        }
+        if (!isStart || GameManager.IsPlayerDead()) return;
+        durationTimer = Time.time;
 
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0)
@@ -43,22 +38,14 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        for (int i = 0; i < 3; i++)
+        if(enemyCount > 50) return;
+
+        if (durationTimer <= 60)
+            EnemySpawn(3, EnemyType.Normal);
+        else if (durationTimer < 120)
         {
-            // check if the spawn position is outside of the camera view
-            Vector3 spawnPos = RandomCircle(GameManager.playerTrm().position, spawnRadius);
-
-            if (!IsVisibleFrom(mainCamera, spawnPos))
-            {
-                enemy = PoolManager.GetEnemyObject(EnemyType.Normal);
-                enemy.transform.position = spawnPos;
-                enemy.gameObject.SetActive(true);
-            }
-            else
-            {
-                spawnTimer = 0;
-            }
-
+            EnemySpawn(3, EnemyType.Normal);
+            EnemySpawn(1, EnemyType.Shaman);
         }
     }
 
@@ -97,6 +84,28 @@ public class EnemySpawner : MonoBehaviour
             enemy.gameObject.SetActive(true);
             enemy.transform.parent = transform;
             angle += Mathf.PI * 2 * goldenRatio;
+        }
+    }
+
+    public void EnemySpawn(int count, EnemyType enemyType)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            // check if the spawn position is outside of the camera view
+            Vector3 spawnPos = RandomCircle(GameManager.playerTrm().position, spawnRadius);
+
+            if (!IsVisibleFrom(mainCamera, spawnPos))
+            {
+                ++enemyCount;
+                enemy = PoolManager.GetEnemyObject(enemyType);
+                enemy.transform.position = spawnPos;
+                enemy.gameObject.SetActive(true);
+            }
+            else
+            {
+                spawnTimer = 0;
+            }
+
         }
     }
 }

@@ -36,6 +36,7 @@ public class EnemyHealth : LivingEntity
         base.Die();
         gameObject.SetActive(false);  
         sr.color = Color.white;
+        EnemySpawner.enemyCount--;
     }
 
     private void Update()
