@@ -30,10 +30,20 @@ public class EnemyFire : Enemy
 
         while (IsCheckPlayer() || !GameManager.IsPlayerDead())
         {
-            ShamanBullet sb = Instantiate(bullet, transform.position, Quaternion.identity);
-            sb.Fire();
+            StraightShot();
             yield return new WaitForSeconds(3);
         }
         isCheck = false;
+    }
+
+    public void StraightShot()
+    {
+        ShamanBullet sb = Instantiate(bullet, transform.position, Quaternion.identity);
+        float angle = Mathf.Atan2(transform.position.y - GameManager.playerTrm().position.y, transform.position.x - GameManager.playerTrm().position.x) * Mathf.Rad2Deg;
+        sb.transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+
+        var dir = (transform.position - GameManager.playerTrm().position).normalized;
+        sb.Fire(dir);
+
     }
 }

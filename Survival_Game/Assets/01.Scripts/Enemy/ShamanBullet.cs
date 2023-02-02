@@ -7,7 +7,6 @@ public class ShamanBullet : MonoBehaviour
     [SerializeField] private float power;
 
     private Rigidbody2D rb;
-    private Vector3 dir;
 
 
     private void Awake()
@@ -15,12 +14,8 @@ public class ShamanBullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Fire()
+    public void Fire(Vector3 dir)
     {
-        float angle = Mathf.Atan2(transform.position.y - GameManager.playerTrm().position.y, transform.position.x - GameManager.playerTrm().position.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
-
-        dir = (transform.position - GameManager.playerTrm().position).normalized;
         rb.velocity = dir * -power;
     }
 
