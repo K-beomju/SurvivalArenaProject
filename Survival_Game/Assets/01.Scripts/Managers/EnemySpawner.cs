@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 3; i++)
         {
             // check if the spawn position is outside of the camera view
             Vector3 spawnPos = RandomCircle(GameManager.playerTrm().position, spawnRadius);

@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     public Transform playerTrm { get; set; }
 
     private Vector3 direction;
-    private float checkRadius = 5;
 
     protected virtual void Awake()
     {

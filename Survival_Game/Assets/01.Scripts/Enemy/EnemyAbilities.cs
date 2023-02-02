@@ -5,7 +5,10 @@ using UnityEngine;
 public enum EnemyType : int
 {
     Normal = 0,
-    Shaman
+    Shaman,
+    Creaper,
+    Ogre,
+    Baby
 }
 
 [CreateAssetMenu(menuName = "Enemy/Abilities")]

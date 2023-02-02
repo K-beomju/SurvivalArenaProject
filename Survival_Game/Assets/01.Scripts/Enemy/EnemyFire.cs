@@ -7,18 +7,22 @@ public class EnemyFire : Enemy
     [SerializeField] private ShamanBullet bullet;
     private bool isCheck = false;
 
+    float numberOfBullets = 10f;
+    float angleStep = 360f;
+    float currentAngle = 0f;
 
     private void OnEnable()
-    {    
+    {
+        angleStep /= numberOfBullets;
         anim.enabled = true;
         StartCoroutine(base.TrackingPlayerCo());
     }
 
     public override void Attack()
     {
-        if(IsCheckPlayer())
+        if (IsCheckPlayer())
         {
-            if(!isCheck)
+            if (!isCheck)
             {
                 StartCoroutine(FireBullet());
                 isCheck = true;
@@ -28,7 +32,8 @@ public class EnemyFire : Enemy
 
     private IEnumerator FireBullet()
     {
-        while(IsCheckPlayer() || !GameManager.IsPlayerDead())
+
+        while (IsCheckPlayer() || !GameManager.IsPlayerDead())
         {
             ShamanBullet sb = Instantiate(bullet, transform.position, Quaternion.identity);
             sb.Fire();

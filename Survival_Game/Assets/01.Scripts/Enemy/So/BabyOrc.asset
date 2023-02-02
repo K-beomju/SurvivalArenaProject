@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c6648073d49b43cfa8fc4ff0b348adf, type: 3}
-  m_Name: CreaperOrc
+  m_Name: BabyOrc
   m_EditorClassIdentifier: 
-  enemyName: "\uD06C\uB9AC\uD37C\uC624\uD06C"
-  health: 10
-  attack: 3
-  speed: 0.7
+  enemyName: "\uBCA0\uC774\uBE44\uC624\uD06C"
+  health: 1
+  attack: 1
+  speed: 2

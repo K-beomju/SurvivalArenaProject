@@ -10,7 +10,7 @@ public class ShamanBullet : MonoBehaviour
     private Vector3 dir;
 
 
-    private void Awake() 
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -24,14 +24,14 @@ public class ShamanBullet : MonoBehaviour
         rb.velocity = dir * -power;
     }
 
-    private void OnBecameInvisible() 
+    private void OnBecameInvisible()
     {
         gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             GameManager.Instance.ph.CheckHitDelay();
             GameManager.Instance.ph.OnDamage(1);

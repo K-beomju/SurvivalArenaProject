@@ -28,6 +28,7 @@ public class EnemyCreaper : Enemy
 
     public IEnumerator FireCreaper()
     {
+        bool isBomb = false;
         while (IsCheckPlayer() || !GameManager.IsPlayerDead())
         {
             for (int i = 0; i < 5; i++)
@@ -51,11 +52,15 @@ public class EnemyCreaper : Enemy
                     GameManager.Instance.ph.OnDamage(3);
                 }
                 creaperArea.SetActive(false);
+                isBomb = true;
             });
 
+            yield return new WaitUntil(() => isBomb);
+            
+            yield return new WaitForSeconds(3f);
+            isCheck = false;
             yield break;
         }
-        isCheck = false;
     }
 
 }
