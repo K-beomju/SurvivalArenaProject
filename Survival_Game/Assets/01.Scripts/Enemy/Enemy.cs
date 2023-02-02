@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public Transform playerTrm { get; set; }
 
     private Vector3 direction;
-
+    private float checkRadius = 5;
 
     protected virtual void Awake()
     {
@@ -44,5 +44,9 @@ public class Enemy : MonoBehaviour
     {
     }
 
+    public bool IsCheckPlayer(float radius = 5)
+    {
+        return Vector2.Distance(transform.position, playerTrm.position) <= radius;
+    }
 
 }
