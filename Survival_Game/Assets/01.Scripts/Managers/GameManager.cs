@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-    private GameObject player;
     public PlayerHealth ph {get; set;}
     public Transform hpTrm;
+
     [SerializeField] private GameOverPanel gameOverPanel;
+    [SerializeField] private LevelSlider levelSlider;
+
+    private GameObject player;
 
     private void Awake()
     {
@@ -28,5 +31,10 @@ public class GameManager : Singleton<GameManager>
     public static bool IsPlayerDead()
     {
         return Instance.ph.dead;
+    }
+
+    public void AddGuage(float exp)
+    {
+        levelSlider.AddGuage(exp);
     }
 }

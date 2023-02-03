@@ -8,18 +8,20 @@ public class PoolManager : Singleton<PoolManager>
     #region ObjectPrefabs
     public GameObject arrowPrefab;
     public GameObject[] enemyPrefab;
+    public GameObject damageTextPrefab;
     #endregion
 
     #region ObjectPools
     private ObjectPooling<Arrow> arrowPool;
     private ObjectPooling<Enemy>[] enemyPool;
+    private ObjectPooling<DamageText> damageTextPool;
     #endregion
-
-    private Dictionary<string, int> effectDic = new Dictionary<string, int>();
 
     void Awake()
     {
         arrowPool = new ObjectPooling<Arrow>(arrowPrefab, this.transform, 10);
+        damageTextPool = new ObjectPooling<DamageText>(damageTextPrefab, this.transform, 20);
+
         enemyPool = new ObjectPooling<Enemy>[enemyPrefab.Length];
         for (int i = 0; i < enemyPrefab.Length; i++)
         {
@@ -31,6 +33,11 @@ public class PoolManager : Singleton<PoolManager>
     public static Arrow GetArrowObject()
     {
         return Instance.arrowPool.GetOrCreate();
+    }
+
+    public static DamageText GetDamageText()
+    {
+        return Instance.damageTextPool.GetOrCreate();
     }
 
     public static Enemy GetEnemyObject(EnemyType enemyType)

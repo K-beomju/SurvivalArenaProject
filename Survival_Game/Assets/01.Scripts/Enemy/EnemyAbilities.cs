@@ -18,4 +18,5 @@ public class EnemyAbilities : ScriptableObject
     public float health;
     public int attack;
     public float speed;
+    public float exp;
 }

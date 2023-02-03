@@ -11,6 +11,7 @@ public class EnemyHealth : LivingEntity
     #endregion 
 
     public EnemyAbilities enemyAb;
+    private DamageText damageText;
 
     protected override void OnEnable()
     {
@@ -29,6 +30,9 @@ public class EnemyHealth : LivingEntity
         hitTime = Time.time;
         sr.color = Color.red;
         #endregion
+
+        damageText = PoolManager.GetDamageText();
+        damageText.ShowDamageText(damage,transform.position);
     }
 
     public override void Die()
@@ -37,6 +41,7 @@ public class EnemyHealth : LivingEntity
         gameObject.SetActive(false);  
         sr.color = Color.white;
         EnemySpawner.enemyCount--;
+        GameManager.Instance.AddGuage(enemyAb.exp);
     }
 
     private void Update()
