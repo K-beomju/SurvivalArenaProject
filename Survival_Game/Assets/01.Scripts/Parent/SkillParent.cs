@@ -5,7 +5,8 @@ using UnityEngine;
 public enum SkillType
 {
     Thunder,
-    HolyArrow
+    HolyArrow,
+    HolyBird
 }
 
 public abstract class SkillParent : MonoBehaviour

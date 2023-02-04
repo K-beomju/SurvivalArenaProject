@@ -29,6 +29,7 @@ public class EnemyFire : Enemy
     {
         if (GameManager.IsPlayerDead()) yield break;
 
+        if(this.gameObject.activeSelf)
         StraightShot();
         yield return new WaitForSeconds(5);
 

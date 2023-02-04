@@ -34,7 +34,7 @@ public class Arrow : MonoBehaviour
         if(other.CompareTag("Enemy"))
         {
             EnemyHealth eh = other.GetComponent<EnemyHealth>();
-            eh.OnDamage(1);
+            eh.OnDamage(12);
             gameObject.SetActive(false);
         }
     }

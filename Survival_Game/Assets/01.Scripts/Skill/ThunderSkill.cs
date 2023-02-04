@@ -15,7 +15,7 @@ public class ThunderSkill : SkillParent
             if(obj != null)
             {
                 EnemyHealth eh = obj.GetComponent<EnemyHealth>();
-                eh.OnDamage(10);
+                eh.OnDamage(30);
             }
         }
     }

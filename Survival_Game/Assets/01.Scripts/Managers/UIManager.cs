@@ -22,14 +22,15 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         enemySpawner = GetComponent<EnemySpawner>();
-        startButton.onClick.AddListener(() => GameStart());    
+        startButton.onClick.AddListener(() => GameStart());
     }
 
-    private void Start() 
+    private void Start()
     {
         Sequence sq = DOTween.Sequence();
-        sq.Append(titleText.DOAnchorPosY(300,3).SetEase(titleEase));
-        sq.Join(titleButtonGroup.DOAnchorPosY(0,3).SetEase(titleEase));
+        sq.Append(titleText.DOAnchorPosY(300, 3).SetEase(titleEase));
+        sq.Join(titleButtonGroup.DOAnchorPosY(0, 3).SetEase(titleEase));
+        SoundManager.Instance.PlayBGMSound("theme_ruine");
 
     }
 
@@ -37,13 +38,17 @@ public class UIManager : MonoBehaviour
     public void GameStart()
     {
         Sequence sq = DOTween.Sequence();
-        sq.Append(titleText.DOAnchorPosY(1300,3).SetEase(titleEase));
-        sq.Join(titleButtonGroup.DOAnchorPosY(-1000,3).SetEase(titleEase));
-        sq.InsertCallback(2,() => {
+        sq.Append(titleText.DOAnchorPosY(1300, 3).SetEase(titleEase));
+        sq.Join(titleButtonGroup.DOAnchorPosY(-1000, 3).SetEase(titleEase));
+        sq.InsertCallback(2, () =>
+        {
             gameCanvas.SetActive(true);
             titleCanvas.SetActive(false);
             enemySpawner.isStart = true;
+            SoundManager.Instance.PlayBGMSound("theme_foret");
+            startButton.interactable = false;
+
         });
-        
+
     }
 }

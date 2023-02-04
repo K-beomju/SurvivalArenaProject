@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OgreOrc
   m_EditorClassIdentifier: 
   enemyName: "\uC624\uC6B0\uAC70\uC624\uD06C"
-  health: 30
+  health: 100
   attack: 3
   speed: 0.5
   exp: 5

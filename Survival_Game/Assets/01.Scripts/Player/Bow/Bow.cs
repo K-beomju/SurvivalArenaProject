@@ -18,5 +18,8 @@ public class Bow : MonoBehaviour
         arrow.transform.position = bowRot.hand.position;
         arrow.transform.rotation = bowRot.hand.rotation;
         arrow.Fire();
+
+        SoundManager.Instance.PlayFXSound("ArrowFx");
+
     }
 }

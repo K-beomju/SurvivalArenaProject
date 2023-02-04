@@ -10,7 +10,6 @@ public class EnemySpawner : MonoBehaviour
     private Camera mainCamera;
     private float spawnTimer;
 
-    private float radius = 10; // the radius of the circular formation
     private float goldenRatio = (1 + Mathf.Sqrt(5)) / 2; // the golden ratio
 
     public bool isStart = false;

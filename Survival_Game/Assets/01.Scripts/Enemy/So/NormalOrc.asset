@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NormalOrc
   m_EditorClassIdentifier: 
   enemyName: "\uC77C\uBC18\uC624\uD06C"
-  health: 3
+  health: 35
   attack: 1
   speed: 1
   exp: 3

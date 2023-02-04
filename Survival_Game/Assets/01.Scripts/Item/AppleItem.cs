@@ -7,7 +7,7 @@ public class AppleItem : ItemParent
     protected override void Eat()
     {
         this.gameObject.SetActive(false);
-        GameManager.Instance.ph.RestoreHealth(3);
+        GameManager.Instance.ph.RestoreHealth(2);
     }
     
 }

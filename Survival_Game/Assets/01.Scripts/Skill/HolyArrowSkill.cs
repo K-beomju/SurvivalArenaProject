@@ -14,7 +14,7 @@ public class HolyArrowSkill : SkillParent
         if (other.CompareTag("Enemy"))
         {
             EnemyHealth eh = other.GetComponent<EnemyHealth>();
-            eh.OnDamage(10);
+            eh.OnDamage(20);
             gameObject.SetActive(false);
         }
     }

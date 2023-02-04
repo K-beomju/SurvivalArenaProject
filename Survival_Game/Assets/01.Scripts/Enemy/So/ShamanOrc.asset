@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShamanOrc
   m_EditorClassIdentifier: 
   enemyName: "\uB9C8\uBC95\uC0AC\uC624\uD06C"
-  health: 5
+  health: 50
   attack: 2
   speed: 0.7
   exp: 4
