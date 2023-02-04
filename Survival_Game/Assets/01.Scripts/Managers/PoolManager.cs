@@ -33,7 +33,7 @@ public class PoolManager : Singleton<PoolManager>
         skillPool = new ObjectPooling<SkillParent>[skillPrefab.Length];
         for (int i = 0; i < skillPrefab.Length; i++)
         {
-            skillPool[i] = new ObjectPooling<SkillParent>(skillPrefab[i], this.transform, 20);
+            skillPool[i] = new ObjectPooling<SkillParent>(skillPrefab[i], this.transform, 10);
         }
 
     }

@@ -10,15 +10,19 @@ public enum SkillType
 
 public abstract class SkillParent : MonoBehaviour
 {
+   
+    public IEnumerator DetativeSkillCo(int delay = 5)
+    {
+        yield return new WaitForSeconds(delay);
+        DetactiveSkill();
+    }
+
+    // 애니메이션 이벤트
     public void DetactiveSkill()
     {
         gameObject.SetActive(false);
     }
 
-    public IEnumerator DetactiveSkillCo()
-    {
-        yield return new WaitForSeconds(3f);
-        gameObject.SetActive(false);
-    }
+
 
 }

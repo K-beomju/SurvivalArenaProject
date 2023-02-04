@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class HolyArrowSkill : SkillParent
 {
-    private Rigidbody2D rb;
-
-    private void Awake()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnEnable()
-    {
-        StartCoroutine(DetactiveSkillCo());
+        StartCoroutine(DetativeSkillCo());    
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -25,7 +18,6 @@ public class HolyArrowSkill : SkillParent
             gameObject.SetActive(false);
         }
     }
-
 
 
 }

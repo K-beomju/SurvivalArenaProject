@@ -33,7 +33,7 @@ public class SkillManager : Singleton<SkillManager>
     IEnumerator SpawnHolyArrow()
     {
         int oneShoting = 12;
-        int speed = 150;
+        int speed = 200;
 
         float angle = 360 / oneShoting;
         for (int j = 0; j < 3; j++)
@@ -43,8 +43,9 @@ public class SkillManager : Singleton<SkillManager>
                 skill = PoolManager.GetSkillObject(SkillType.HolyArrow);
                 skill.gameObject.SetActive(true);
                 skill.transform.position = GameManager.playerTrm().position;
+                skill.transform.rotation = Quaternion.Euler(0f, 0f, angle * i);
+
                 skill.GetComponent<Rigidbody2D>().AddForce(new Vector2(speed * Mathf.Cos(Mathf.PI * 2 * i / oneShoting), speed * Mathf.Sin(Mathf.PI * i * 2 / oneShoting)));
-                skill.transform.Rotate(new Vector3(0f, 0f, 360 * i / oneShoting));
             }
             yield return new WaitForSeconds(2f);
         }
