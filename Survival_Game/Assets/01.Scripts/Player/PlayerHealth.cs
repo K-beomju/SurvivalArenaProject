@@ -8,6 +8,7 @@ public class PlayerHealth : LivingEntity
     [SerializeField] private HitEffect hitEffect;
 
     public bool isHit { get; set; } = false;
+    public bool DebugMode = false;
     private float damageDelay = 0.5f;
     private float nextDamageTime;
 
@@ -19,12 +20,19 @@ public class PlayerHealth : LivingEntity
 
     public override void OnDamage(float damage)
     {
-        if (!isHit || GameManager.IsPlayerDead()) return;
+        if (!isHit || GameManager.IsPlayerDead() || DebugMode) return;
 
         base.OnDamage(damage);
         hpBar.SetFill(health, initHealth);
         hitEffect.HitScreen();
         isHit = false;
+
+    }
+
+    public override void RestoreHealth(float value) 
+    {
+        base.RestoreHealth(value);
+        hpBar.SetFill(health, initHealth);
 
     }
 

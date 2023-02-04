@@ -30,7 +30,7 @@ public class EnemyFire : Enemy
         if (GameManager.IsPlayerDead()) yield break;
 
         StraightShot();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
 
         isCheck = false;
     }

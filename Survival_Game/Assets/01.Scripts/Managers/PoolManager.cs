@@ -9,12 +9,14 @@ public class PoolManager : Singleton<PoolManager>
     public GameObject arrowPrefab;
     public GameObject[] enemyPrefab;
     public GameObject damageTextPrefab;
+    public GameObject[] skillPrefab;
     #endregion
 
     #region ObjectPools
     private ObjectPooling<Arrow> arrowPool;
     private ObjectPooling<Enemy>[] enemyPool;
     private ObjectPooling<DamageText> damageTextPool;
+    private ObjectPooling<SkillParent>[] skillPool;
     #endregion
 
     void Awake()
@@ -26,6 +28,12 @@ public class PoolManager : Singleton<PoolManager>
         for (int i = 0; i < enemyPrefab.Length; i++)
         {
             enemyPool[i] = new ObjectPooling<Enemy>(enemyPrefab[i], this.transform, 10);
+        }
+
+        skillPool = new ObjectPooling<SkillParent>[skillPrefab.Length];
+        for (int i = 0; i < skillPrefab.Length; i++)
+        {
+            skillPool[i] = new ObjectPooling<SkillParent>(skillPrefab[i], this.transform, 20);
         }
 
     }
@@ -43,5 +51,10 @@ public class PoolManager : Singleton<PoolManager>
     public static Enemy GetEnemyObject(EnemyType enemyType)
     {
         return Instance.enemyPool[(int)enemyType].GetOrCreate();
+    }
+
+    public static SkillParent GetSkillObject(SkillType skillType)
+    {
+        return Instance.skillPool[(int)skillType].GetOrCreate();
     }
 }

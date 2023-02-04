@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
     private float goldenRatio = (1 + Mathf.Sqrt(5)) / 2; // the golden ratio
 
     public bool isStart = false;
+    private int ogreEnemyCount = 0;
 
     public static int enemyCount = 0;
 
@@ -38,14 +39,47 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        if(enemyCount > 50) return;
+        if (enemyCount > 50) return;
 
         if (durationTimer <= 60)
             EnemySpawn(3, EnemyType.Normal);
         else if (durationTimer < 120)
         {
-            EnemySpawn(3, EnemyType.Normal);
+            EnemySpawn(2, EnemyType.Normal);
             EnemySpawn(1, EnemyType.Shaman);
+        }
+        else if (durationTimer < 200)
+        {
+            EnemySpawn(2, EnemyType.Normal);
+            EnemySpawn(1, EnemyType.Creaper);
+        }
+        else if (durationTimer < 300)
+        {
+            EnemySpawn(3, EnemyType.Normal);
+            EnemySpawn(1, EnemyType.Creaper);
+            EnemySpawn(1, EnemyType.Shaman);
+        }
+        else if (durationTimer < 500)
+        {
+            EnemySpawn(1, EnemyType.Shaman);
+            EnemySpawn(5, EnemyType.Baby);
+        }
+        else if (durationTimer < 700)
+        {
+            EnemySpawn(1, EnemyType.Shaman);
+            EnemySpawn(1, EnemyType.Creaper);
+            EnemySpawn(1, EnemyType.Baby);
+        }
+        else
+        {
+            if (ogreEnemyCount < 3)
+            {
+                EnemySpawn(1, EnemyType.Ogre);
+                ogreEnemyCount += 1;
+            }
+
+            EnemySpawn(1, EnemyType.Shaman);
+            EnemySpawn(1, EnemyType.Normal);
         }
     }
 
@@ -68,23 +102,6 @@ public class EnemySpawner : MonoBehaviour
             return true;
         }
         return false;
-    }
-
-
-    // 원형 테두리 생성
-    void SpawnCircleEnemy(int spawnCount = 10)
-    {
-        float angle = 0; // the current angle
-        for (int i = 0; i < spawnCount; i++)
-        {
-            float x = radius * Mathf.Cos(angle);
-            float y = radius * Mathf.Sin(angle);
-            enemy = PoolManager.GetEnemyObject(EnemyType.Normal);
-            enemy.transform.position = new Vector2(x, y) + (Vector2)GameManager.playerTrm().position;
-            enemy.gameObject.SetActive(true);
-            enemy.transform.parent = transform;
-            angle += Mathf.PI * 2 * goldenRatio;
-        }
     }
 
     public void EnemySpawn(int count, EnemyType enemyType)

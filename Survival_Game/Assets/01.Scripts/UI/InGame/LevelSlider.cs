@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class LevelSlider : MonoBehaviour
 {
     private Slider levelSlider;
-    private int level = 0;
 
     private void Awake()
     {
@@ -20,7 +19,6 @@ public class LevelSlider : MonoBehaviour
 
     public void AddGuage(float exp)
     {
-        //levelSlider.value = levelSlider.value + exp >= levelSlider.maxValue ? levelSlider.value + exp - levelSlider.maxValue : levelSlider.value + exp;
 
         if(levelSlider.value + exp >= levelSlider.maxValue)
         {

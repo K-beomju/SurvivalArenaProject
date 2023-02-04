@@ -28420,6 +28420,7 @@ GameObject:
   - component: {fileID: 2071864260}
   - component: {fileID: 2071864261}
   - component: {fileID: 2071864258}
+  - component: {fileID: 2071864262}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -28447,6 +28448,9 @@ MonoBehaviour:
   - {fileID: 2345582975165949337, guid: 76bab0a422e1c4d50aa0853f22b69fe0, type: 3}
   - {fileID: 6842602298759912881, guid: 48df72c6099d2459f9b9fadda719e8e3, type: 3}
   damageTextPrefab: {fileID: 8706277572852674483, guid: 9825152e591644d12a18e2db4cf783fe, type: 3}
+  skillPrefab:
+  - {fileID: 1440883619041772431, guid: 5eaf5c416462244f0a34d1b4c6d6d856, type: 3}
+  - {fileID: 7082041314289433636, guid: 75340cd052eed4aba8796373dc14594b, type: 3}
 --- !u!114 &2071864258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28511,6 +28515,18 @@ MonoBehaviour:
   adsButton: {fileID: 1273431581}
   gameCanvas: {fileID: 591664998}
   titleCanvas: {fileID: 2104184300}
+--- !u!114 &2071864262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071864256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c8ee8b73aef4a5bbe96bb50240f6a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2095022095
 GameObject:
   m_ObjectHideFlags: 0
@@ -29109,6 +29125,7 @@ MonoBehaviour:
   initHealth: 10
   hpBar: {fileID: 679224160141208839}
   hitEffect: {fileID: 813615784}
+  DebugMode: 0
 --- !u!114 &2159043160394768953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29236,7 +29253,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
