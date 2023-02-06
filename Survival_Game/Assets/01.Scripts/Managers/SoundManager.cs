@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singleton<SoundManager>
 {
     public float MasterVoulme => masterVoulme;
     public float BGMVolume => bgmVolume * MasterVoulme;
@@ -18,48 +18,11 @@ public class SoundManager : MonoBehaviour
     private Dictionary<string, AudioClip> bgmSoundDic = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> fxSoundDic = new Dictionary<string, AudioClip>();
 
-    private static SoundManager instance;
-    public static SoundManager Instance
-    {
-        get
-        {
-            if (instance == null) // instance �� ����ִٸ�
-            {
-                instance = FindObjectOfType<SoundManager>(); // ã���ش�
-                if (instance == null) // �׷��� ���ٸ� 
-                {
-                    instance = new GameObject(typeof(SoundManager).ToString()).AddComponent<SoundManager>(); // �����
-                }
-            }
-
-            return instance;
-        }
-    }
-
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this as SoundManager;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-        DontDestroyOnLoad(this);
-
         foreach (var audioClip in Resources.LoadAll<AudioClip>("Sound/BGM")) // Resource �������ִ� ����� ��Ƶα�
         {
             bgmSoundDic.Add(audioClip.name, audioClip);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (instance == this)
-        {
-            instance = default;
         }
     }
 
