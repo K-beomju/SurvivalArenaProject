@@ -7,6 +7,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine.SceneManagement;
+using GoogleMobileAds.Api;
 
 public class GameOverPanel : MonoBehaviour
 {
@@ -19,15 +20,61 @@ public class GameOverPanel : MonoBehaviour
     [SerializeField] private GameTimer gameTimer;
 
     [SerializeField] private Button startButton;
-    [SerializeField] private Button rankRutton;
-
-
 
     private static string encryptionKey = "your_unique_encryption_key";
 
-    private void Awake() 
+    private InterstitialAd interstitial;
+    public Canvas myCanvas;
+     
+    private void Awake()
     {
-        startButton.onClick.AddListener(() => SceneManager.LoadScene("GameScene"));
+        startButton.onClick.AddListener(() => RePlayGame());
+    }
+
+    private void RequestInterstitial()
+    {
+#if UNITY_ANDROID
+        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+#elif UNITY_IPHONE
+        string adUnitId = "ca-app-pub-3940256099942544/4411468910";
+#else
+        string adUnitId = "unexpected_platform";
+#endif
+
+        // Initialize an InterstitialAd.
+        this.interstitial = new InterstitialAd(adUnitId);
+
+        // Called when the ad is closed.
+        this.interstitial.OnAdClosed += HandleOnAdClosed;
+
+        // Create an empty ad request.
+        AdRequest request = new AdRequest.Builder().Build();
+        // Load the interstitial with the request.
+        this.interstitial.LoadAd(request);
+    }
+
+
+
+    public void RePlayGame()
+    {
+        RequestInterstitial();
+        StartCoroutine(ShowInterstitial());
+
+        IEnumerator ShowInterstitial()
+        {
+            while(!this.interstitial.IsLoaded())
+            {
+                yield return new WaitForSeconds(0.2f);
+            }
+            this.interstitial.Show();
+            myCanvas.sortingOrder = -1;
+        }
+        
+    }
+
+    public void HandleOnAdClosed(object sender, EventArgs args)
+    {
+        SceneManager.LoadScene("GameScene");
     }
 
     public void Start()
